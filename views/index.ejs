@@ -1,0 +1,43 @@
+  
+<%- include("partials/head"); -%>
+ 
+ 
+ <h1>Url Shrinkener</h1>
+ <form action="/shortUrls" method="POST" class="my-4 form-inline">
+     <label for="fullUrl" class="sr-only">Url</label>
+     <input placeholder="url" type="url" name="fullUrl" id="fullUrl"
+     class="form-control mr-2">
+     <button class="btn btn-danger" 
+     type="submit">Shrink</button>
+ </form>
+ 
+ <table class="table table-striped table-responsive">
+     <thead>
+         <tr>
+             <th>Full Url</th>
+             <th>Short Url</th>
+             <th>Clicks</th>
+         </tr>
+     </thead>
+     <tbody>
+         <% shortUrls.forEach(shortUrl =>{
+          %>
+          <tr><td>
+             <a href=" <%=shortUrl.full %>">
+                <%=shortUrl.full %></a>
+         </td>
+         <td>
+             <a href="<%= shortUrl.short%>"><%= shortUrl.short%>
+                </a>
+         </td>
+         <td><%=shortUrl.clicks%></td>
+        </tr>
+         <%
+         })%>
+        
+     </tbody>
+ </table>
+</div>
+</body>
+  
+<%- include("partials/foot"); -%>
